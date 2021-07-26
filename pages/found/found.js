@@ -1,12 +1,17 @@
 // pages/found/found.js
-import {reqBanner} from '../../network/api'
+import {reqBanner, reqHomePageBall} from '../../network/api'
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        tapRoute: [
+            {
+                name: '每日推荐',
+                path: '/pages/recommend/recommend'
+            }
+        ]
     },
     // 获取首页banner图
     async getBanner () {
@@ -15,11 +20,27 @@ Page({
             banners
         })
     },
+    // 首页-发现-圆形图标入口列表
+    async getBall () {
+        const {data} = await reqHomePageBall()
+        this.setData({
+            homePageBall: data
+        })
+    },
+    // 图标入口路由跳转
+    navigateTo(e) {
+        const {name} = e.currentTarget.dataset
+        const {path} = this.data.tapRoute.filter(item => item.name === name)[0]
+        if (path) wx.navigateTo({
+          url: path,
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         this.getBanner()
+        this.getBall()
     },
 
     /**
