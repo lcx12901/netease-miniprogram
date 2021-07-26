@@ -1,28 +1,54 @@
 <!--pages/found/found.wxml-->
 <view class="container">
+    <!-- 首页---发现----banner图 -->
     <swiper 
         indicator-dots="true"
-
+        autoplay="true"
+        circular="true"
+        indicator-color="rgba(0, 0, 0, .3)"
+        indicator-active-color="#fff"
         interval="2000" 
         duration="500"
         easing-function="linear"
     >
         <block wx:for="{{banners}}" wx:key="*this">
-            <swiper-item>
-                <view class="swiper-box">
-                    <image
-                        class="swiper-img"
-                        style=" background-color: #eeeeee;" 
-                        mode="widthFix"
-                        src="{{item.pic}}">
-                    </image>
+            <swiper-item class="swiper-box">
+                <image
+                    class="swiper-img"
+                    style=" background-color: #eeeeee;" 
+                    mode="widthFix"
+                    src="{{item.pic}}">
                     <text
                         class="swiper-text"
                         style="background-color: {{item.titleColor}}; color: #fff;">
                         {{item.typeTitle}}
                     </text>
-                </view>
+                </image>
             </swiper-item>
         </block>
     </swiper>
+    <!-- 首页-发现-圆形图标入口列表 -->
+    <scroll-view
+        class="scroll-view" 
+        scroll-x="true" 
+        bindscroll="scroll" 
+        style="width: 100%"
+        enable-flex="true"
+    >
+        <view class="scroll-view-box">
+            <block
+                wx:for="{{homePageBall}}"
+                wx:key="*this"
+            >
+                <view class="scroll-item" data-name="{{item.name}}" bindtap="navigateTo">
+                    <image
+                        src="{{item.iconUrl}}"
+                        mode="widthFix"
+                    >
+                    </image>
+                    <text>{{item.name}}</text>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
 </view>
