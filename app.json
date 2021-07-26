@@ -1,0 +1,32 @@
+{
+  "pages":[
+    "pages/found/found",
+    "pages/me/me",
+    "pages/login/login"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#d43c33",
+    "navigationBarTitleText": "网易云音乐",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "selectedColor": "#d43c33",
+    "list": [
+      {
+        "pagePath": "pages/found/found",
+        "text": "发现",
+        "iconPath": "assets/imgs/found.png",
+        "selectedIconPath": "assets/imgs/found-fill.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "assets/imgs/user.png",
+        "selectedIconPath": "assets/imgs/user-fill.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
