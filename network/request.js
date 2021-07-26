@@ -11,14 +11,15 @@ export const request =  ({url, data = {}, method = 'get' }) => {
           url: BASEURL + url,
           data,
           method,
-          headers: {
-            cookie: wx.getStorageSync('cookies')
+          header: {
+            'cookie': wx.getStorageSync('cookie')
           },
           success (res) {
             resolve (res.data)
             wx.hideLoading()
           },
           fail (err) {
+            console.log(err)
             reject (err)
             wx.hideLoding()
           }
