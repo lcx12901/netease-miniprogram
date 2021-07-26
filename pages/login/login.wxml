@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+    <view class="tip">
+        <text>登录体验更多精彩</text>
+        <text>未注册手机号登录后将自动创建账号</text>
+    </view>
+    <view class="login-form">
+        <form catchsubmit="formSubmit">
+            <input 
+                type="text" 
+                name="phone" 
+                id="phone" 
+                placeholder="请输入手机号码"
+                placeholder-class="placeholder" />
+            <input 
+                type="password" 
+                name="password" 
+                id="password"  
+                placeholder="请输入密码"
+                placeholder-class="placeholder" />
+            <button formType="submit" class="form-submit">登录</button>
+        </form>
+    </view>
+</view>

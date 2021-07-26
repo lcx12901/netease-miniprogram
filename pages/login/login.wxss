@@ -1,0 +1,37 @@
+/* pages/login/login.wxss */
+.container {
+    padding: 0 10px;
+}
+.tip {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.tip text:first-child {
+    font-size: 15px;
+    font-weight: bold;    
+}
+
+.tip text:last-child {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #00000080;
+}
+
+.login-form form input {
+    border-bottom: 1px solid #F2F4F4;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+.login-form form input .placeholder {
+    font-size: 12px;
+}
+
+.login-form form .form-submit {
+    width: 100%;
+    background-color: #d81e06;
+    border-radius: 20px;
+    color: #fff;
+}
