@@ -1,0 +1,28 @@
+<!--pages/found/found.wxml-->
+<view class="container">
+    <swiper 
+        indicator-dots="true"
+
+        interval="2000" 
+        duration="500"
+        easing-function="linear"
+    >
+        <block wx:for="{{banners}}" wx:key="*this">
+            <swiper-item>
+                <view class="swiper-box">
+                    <image
+                        class="swiper-img"
+                        style=" background-color: #eeeeee;" 
+                        mode="widthFix"
+                        src="{{item.pic}}">
+                    </image>
+                    <text
+                        class="swiper-text"
+                        style="background-color: {{item.titleColor}}; color: #fff;">
+                        {{item.typeTitle}}
+                    </text>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
