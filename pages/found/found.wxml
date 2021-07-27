@@ -33,6 +33,7 @@
         class="scroll-view" 
         scroll-x="true" 
         style="width: 100%"
+        show-scrollbar="false"
         enable-flex="true"
     >
         <view class="scroll-view-box">
@@ -78,7 +79,7 @@
                                 <text>{{utils.formatNumberUnit(item.playcount)}}</text>
                             </view>
                         </image>
-                        <view>{{item.name}}</view>
+                        <view class="text-wrap">{{item.name}}</view>
                     </view>
                 </block>
             </view>
@@ -111,9 +112,9 @@
                                 <image src="{{item.al.picUrl}}"></image>
                                 <image src="../../assets/imgs/play-fill.png"></image>
                             </view>
-                            <view>
+                            <view >
                                 <text>{{index}}</text>
-                                <text>{{item.al.name}}</text>
+                                <text class="text-wrap">{{item.al.name}}</text>
                             </view>
                         </view>
                     </view>

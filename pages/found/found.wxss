@@ -21,7 +21,6 @@
 .scroll-view {
     white-space: nowrap;
     min-height: 200rpx;
-    overflow-anchor:auto;
 }
 .scroll-view-box {
     display: flex;
@@ -129,17 +128,12 @@
     font-size: 12px;
     line-height: 20px;
     white-space: normal;
-    text-overflow: -o-ellipsis-lastline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    align-content: center;
+
 }
 /* 排行榜 */
 .play-swiper-box {
-    height: 300px;
+    height: 270px;
     align-items: center;
 }
 .play-swiper-item {
@@ -150,7 +144,7 @@
 .play-swiper {
     width: 95%;
     height: 95%;
-    padding-left: 3px;
+    padding-left: 5px;
     border-radius: 20px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
@@ -165,7 +159,7 @@
 }
 .play-song {
     display: flex;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 .play-song > view:first-child {
     position: relative;
@@ -191,21 +185,17 @@
 .play-song > view:last-child {
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 .play-song > view:last-child text {
     font-size: 14px;
 }
 .play-song > view:last-child text:first-child {
-    margin: 0 18px 0 8px;
+    margin: 0 15px 0 8px;
 }
 .play-song > view:last-child text:nth-child(2) {
-    white-space: normal;
-    text-overflow: -o-ellipsis-lastline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    align-content: center;
-    
+    /* min-width: 60%;
+    max-width: 60%; */
+    white-space: nowrap;
+    -webkit-line-clamp: 1;
 }
