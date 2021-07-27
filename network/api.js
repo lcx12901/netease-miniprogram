@@ -11,3 +11,9 @@ export const reqHomePageBall = () => request({url: '/homepage/dragon/ball'})
 
 // 获取每日推荐歌曲
 export const reqRecommendSongs = () => request({url: '/recommend/songs'})
+
+// 获取每日推荐歌单
+export const reqRecommendResource = () => request({url: '/recommend/resource'})
+
+// 获取歌单详情
+export const reqPlayListDetail = (id) => request({url: '/playlist/detail', data: {id}})
