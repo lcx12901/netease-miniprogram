@@ -1,4 +1,5 @@
 <!--pages/found/found.wxml-->
+<wxs module="utils" src="../../utils/util.wxs"></wxs>
 <view class="container">
     <!-- 首页---发现----banner图 -->
     <swiper 
@@ -31,7 +32,6 @@
     <scroll-view
         class="scroll-view" 
         scroll-x="true" 
-        bindscroll="scroll" 
         style="width: 100%"
         enable-flex="true"
     >
@@ -45,10 +45,80 @@
                         src="{{item.iconUrl}}"
                         mode="widthFix"
                     >
+                        <text wx:if="{{item.name == '每日推荐'}}">{{today}}</text>
                     </image>
                     <text>{{item.name}}</text>
                 </view>
             </block>
         </view>
     </scroll-view>
+    <!-- 获取每日推荐歌单 -->
+    <view class="recommend">
+        <view class="title">
+            <text>推荐歌单</text>
+            <view class="show-more">
+                <text>更多</text>
+                <image src="../../assets/imgs/jiantou.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <scroll-view
+            class="scroll-view" 
+            scroll-x="true" 
+            style="width: 100%"
+            enable-flex="true"
+        >
+            <view class="scroll-view-box">
+                <block wx:for="{{recommend}}" wx:key="*this">
+                    <view
+                        class="scroll-resource-item"
+                        data-id="{{item.id}}">
+                        <image src="{{item.picUrl}}">
+                            <view>
+                                <image src="../../assets/imgs/play.png"></image>
+                                <text>{{utils.formatNumberUnit(item.playcount)}}</text>
+                            </view>
+                        </image>
+                        <view>{{item.name}}</view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- 榜单推荐 -->
+    <view>
+        <view class="title">
+            <text>排行榜</text>
+            <view class="show-more">
+                <text>更多</text>
+                <image src="../../assets/imgs/jiantou.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <swiper easing-function="linear" next-margin="25px" class="play-swiper-box">
+            <block wx:for="{{topListDetail}}" wx:key="*this">
+                <swiper-item class="play-swiper-item">
+                    <view class="play-swiper">
+                        <view class="play-title">
+                            <text>{{item.name}}</text>
+                            <image src="../../assets/imgs/jiantou.png"></image>
+                        </view>
+                        <view 
+                            wx:for="{{item.tracks}}" 
+                            wx:key="*this" 
+                            data-songid="{{item.id}}"
+                            class="play-song"
+                        >
+                            <view>
+                                <image src="{{item.al.picUrl}}"></image>
+                                <image src="../../assets/imgs/play-fill.png"></image>
+                            </view>
+                            <view>
+                                <text>{{index}}</text>
+                                <text>{{item.al.name}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
 </view>
