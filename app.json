@@ -4,6 +4,7 @@
     "pages/me/me",
     "pages/login/login",
     "pages/recommend/recommend"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
