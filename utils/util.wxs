@@ -1,3 +1,4 @@
+// 格式化时间戳
 var formatTime = function (date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -14,6 +15,7 @@ var formatNumber = function (n) {
   return n[1] ? n : '0' + n
 }
 
+// 格式化数字单位
 var formatNumberUnit = function (number) {
   var unit = '';
   var k = 10000,
@@ -29,7 +31,14 @@ var formatNumberUnit = function (number) {
   return number + unit
 }
 
+// 格式化歌曲作者
+var formatAr = function (ar) {
+  return 1
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatNumberUnit: formatNumberUnit
+  formatNumber: formatNumber,
+  formatNumberUnit: formatNumberUnit,
+  formatAr: formatAr
 }
