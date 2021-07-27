@@ -19,7 +19,6 @@ export const request =  ({url, data = {}, method = 'get' }) => {
             wx.hideLoading()
           },
           fail (err) {
-            console.log(err)
             reject (err)
             wx.hideLoding()
           }
