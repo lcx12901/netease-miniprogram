@@ -32,6 +32,9 @@
   content: "\e72b";
   color: #d81e06;
 }
+.icon-iconfontjiantou5:before {
+  content: "\e635";
+}
 
 /**app.wxss**/
 
@@ -44,3 +47,4 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }  */
+
