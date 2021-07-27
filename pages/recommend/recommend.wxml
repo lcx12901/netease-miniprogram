@@ -1,2 +1,34 @@
 <!--pages/recommend/recommend.wxml-->
-<text>pages/recommend/recommend.wxml</text>
+<wxs module="utils" src="../../utils/util.wxs"></wxs>
+<scroll-view 
+  class="recommend"
+  scroll-y="true"
+  bindscroll="fixed"
+  style="height: 100vh"
+>
+  <view class="title">
+    <view class="back-radius back-mini"></view>
+    <view class="back-radius back-middle"></view>
+    <view class="back-radius back-large"></view>
+    <view class="today">
+      <text>{{today.day}}</text>
+      <text>/{{utils.formatNumber(today.month)}}</text>
+      <view>
+        <text>查看今日运势</text>
+        <image src="../../assets/imgs/jiantou.png"></image>
+      </view>
+    </view>
+    <view class="history">
+      <text>历史日推</text>
+      <icon class="iconfont icon-VIP"></icon>
+    </view>
+  </view>
+  <view class="content" bindscroll="fixed">
+    <view class="{{fixed ? 'fixed' : ''}} play-all" hover-class="gray-back">
+      <image src="../../assets/imgs/play-pink.png"></image>
+      <text>播放全部</text>
+    </view>
+    <block>
+    </block>
+  </view>
+</scroll-view>

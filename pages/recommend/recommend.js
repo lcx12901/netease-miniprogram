@@ -11,7 +11,20 @@ Page({
   async getRecommendSongs () {
     const {data} = await reqRecommendSongs ()
     this.setData({
-      recommends: data
+      recommends: data,
+      today: {
+        month: new Date().getMonth() + 1,
+        day: new Date().getDate()
+      }
+    })
+  },
+  // 页面主要内容容器滚动监听
+  fixed (e) {
+    const {scrollTop} = e.detail
+    scrollTop >= 140 ? this.setData({
+      fixed: true
+    }) : this.setData({
+      fixed: false
     })
   },
   /**
