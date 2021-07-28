@@ -1,4 +1,5 @@
 /* pages/recommend/recommend.wxss */
+/* 头部框 */
 .title {
   position: relative;
   min-height: 120px;
@@ -30,6 +31,7 @@
   width: 120px;
   height: 120px;
 }
+/* 显示今天日期 */
 .today {
   margin-top: auto;
   color: #fff;
@@ -54,6 +56,7 @@
   width: 12px;
   height: 12px;
 }
+/* 历史日推 */
 .history {
   margin-top: auto;
   margin-left: auto;
@@ -68,28 +71,102 @@
 .history icon {
   height: 16px;
 }
-
+/* 每日推荐主体内容 */
 .content {
   height: 1000px;
 }
-
+/* 全部播放  粘性布局 */
 .fixed {
   position: fixed;
   top: 0;
 }
 .play-all {
   display: flex;
+  width: 100%;
   align-items: center;
-  padding: 20px 10px;
+  padding-left: 10px;
+  height: 50px;
+  font-size: 15px;
+  background: #fff;
+  z-index: 99;
 }
 .play-all image {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-right: 20px;
+}
+.play-all image:last-child {
+  margin-left: auto;
 }
 .play-all text {
   font-weight: bolder;
 }
 .gray-back {
   background-color: #F8F8FF;
+}
+/* 歌单 */
+.song {
+  display: flex;
+  padding: 5px 10px;
+}
+.song > image {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 5px;
+}
+.song .song-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+  width: 60%;
+}
+.song .song-info > text {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.song .song-info .song-info-tag {
+  display: flex;
+  margin-top: 3px;
+}
+.song .song-info .song-info-tag .song-sq {
+  font-size: 8px;
+  color: #d81e06;
+  border: 1px solid #d81e0650;
+  padding: 2px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.song .song-info .song-info-tag .song-resons {
+  display: block;
+  font-size: 10px;
+  white-space: nowrap;
+  color: #FFD700;
+  background-color: 	#ffff002d;
+}
+.song .song-info .song-info-tag .song-ar {
+  display: block;
+  margin-left: 3px;
+  font-size: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  opacity: .6;
+}
+.song .song-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.song .song-icon image {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

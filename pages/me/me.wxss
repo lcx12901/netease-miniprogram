@@ -1,1 +1,71 @@
 /* pages/me/me.wxss */
+.me {
+    background: #f5f5f5;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.user {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+.user .user-image {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 100%;
+    margin-right: 20px;
+}
+.user .user-image image {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+}
+.profile .user-nickname text {
+    font-weight: bold;
+}
+.profile .user-nickname view {
+    background: rgba(255, 255, 255, 0.699);
+    font-size: 10px;
+    width: 35px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 10px;
+}
+.profile .iconfont {
+    margin-left: auto;
+}
+/* 我的页面功能卡片 */
+.function {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    margin: 0 auto;
+    padding: 20px 20px 0 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.function view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+.function view image {
+    width: 30px;
+    height: 30px;
+}
+.function view text {
+    margin-top: 10px;
+    opacity: .6;
+}

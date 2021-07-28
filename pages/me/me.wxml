@@ -1,2 +1,60 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<scroll-view 
+    class="me"
+    scroll-y="true"
+    style="height: 100vh;"
+    bindscroll="meScroll">
+    <!-- 用户头像信息 -->
+    <view class="user profile" wx:if="{{userDetail}}">
+        <view class="user-image">
+            <image src="{{userDetail.profile.avatarUrl}}"></image>
+        </view>
+        <view class="user-nickname">
+            <text>{{userDetail.profile.nickname}}</text>
+            <view>lv.{{userDetail.level}}</view>
+        </view>
+        <icon class="iconfont icon-iconfontjiantou5"></icon>
+    </view>
+    <view class="user login" wx:else bindtap="toLogin">
+        <view class="user-image">
+            <image src="../../assets/imgs/login-user.png"></image>
+        </view>
+        <text>立即登录</text>
+        <icon class="iconfont icon-iconfontjiantou5"></icon>
+    </view>
+    <!-- 功能 -->
+    <view class="function">
+        <view>
+            <image src="../../assets/imgs/load.png"></image>
+            <text>本地/下载</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/yun.png"></image>
+            <text>云盘</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/shop.png"></image>
+            <text>已购</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/play-pink.png"></image>
+            <text>最近播放</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/friend.png"></image>
+            <text>我的好友</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/star.png"></image>
+            <text>收藏和赞</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/boke.png"></image>
+            <text>我的播客</text>
+        </view>
+        <view>
+            <image src="../../assets/imgs/add.png"></image>
+            <text>音乐应用</text>
+        </view>
+    </view>
+</scroll-view>

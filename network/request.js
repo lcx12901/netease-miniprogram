@@ -12,7 +12,7 @@ export const request =  ({url, data = {}, method = 'get' }) => {
           data,
           method,
           header: {
-            'cookie': wx.getStorageSync('cookie')
+            cookie: wx.getStorageSync('cookie')
           },
           success (res) {
             resolve (res.data)

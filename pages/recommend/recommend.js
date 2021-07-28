@@ -6,25 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fixed: false,
+    today: {
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate()
+    }
   },
   async getRecommendSongs () {
     const {data} = await reqRecommendSongs ()
+    const {dailySongs, recommendReasons} = data
     this.setData({
-      recommends: data,
-      today: {
-        month: new Date().getMonth() + 1,
-        day: new Date().getDate()
-      }
+      dailySongs,
+      recommendReasons
     })
   },
   // 页面主要内容容器滚动监听
   fixed (e) {
     const {scrollTop} = e.detail
-    scrollTop >= 140 ? this.setData({
-      fixed: true
-    }) : this.setData({
-      fixed: false
+    let isFixed
+    scrollTop >= 140 ? isFixed = true : isFixed = false
+    if (this.data.fixed === isFixed) return
+    this.setData({
+      fixed: isFixed
     })
   },
   /**

@@ -1,19 +1,13 @@
-// pages/me/me.js
-import {reqUserDetail} from '../../network/api.js'
+// pages/video/video.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      uid: 0,
-      userDetail: []
+
     },
-    toLogin () {
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -27,21 +21,12 @@ Page({
     onReady: function () {
 
     },
-    async getUserDetail () {
-      const userDetail = await reqUserDetail(this.data.uid)
-      this.setData({
-        userDetail
-      })
-    },
+
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      this.setData({
-        uid: wx.getStorageSync('profile').userId
-      })
-      if (this.data.uid && !Object.keys(this.data.userDetail).length) this.getUserDetail()
-      
+
     },
 
     /**

@@ -31,14 +31,39 @@ var formatNumberUnit = function (number) {
   return number + unit
 }
 
+// 格式化推荐理由
+var formatReasons = function (reasonsList, id) {
+  for (var i = 0; i < reasonsList.length; i++) {
+    if (reasonsList[i].songId == id) {
+      return reasonsList[i].reason
+    }
+  }
+}
 // 格式化歌曲作者
-var formatAr = function (ar) {
-  return 1
+var formatAr = function (songInfo) {
+  var ar = songInfo.ar
+  var al = songInfo.al
+  var originSongSimpleData = songInfo.originSongSimpleData
+  if (originSongSimpleData) {
+    var origin = " | 原唱： " + originSongSimpleData.artists[0].name
+  } else {
+    var origin = ''
+  }
+  if (ar.length == 1) {
+    var ars = ar[0].name
+  } else {
+    var ars = ''
+    ar.forEach(function (item, index) {
+      index > 0 ? ars += '/' + item.name : ars += item.name
+    })
+  }
+  return ars + ' - ' + al.name + origin
 }
 
 module.exports = {
   formatTime: formatTime,
   formatNumber: formatNumber,
   formatNumberUnit: formatNumberUnit,
+  formatReasons: formatReasons,
   formatAr: formatAr
 }

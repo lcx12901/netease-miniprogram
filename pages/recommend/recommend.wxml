@@ -23,12 +23,31 @@
       <icon class="iconfont icon-VIP"></icon>
     </view>
   </view>
-  <view class="content" bindscroll="fixed">
+  <view class="content" bindscroll="fixed" binddragstart="fixed">
     <view class="{{fixed ? 'fixed' : ''}} play-all" hover-class="gray-back">
       <image src="../../assets/imgs/play-pink.png"></image>
       <text>播放全部</text>
+      <image src="../../assets/imgs/download.png"></image>
     </view>
-    <block>
+    <view class="play-all" wx:if="{{fixed}}"></view>
+    <block wx:for="{{dailySongs}}" wx:key="*this">
+      <view class="song" data-id="{{item.al.id}}">
+        <image src="{{item.al.picUrl}}"></image>
+        <view class="song-info">
+          <text>{{item.name}} <text wx:if="{{item.alia.length}}">({{item.alia[0]}})</text></text>
+          <view class="song-info-tag">
+            <text class="song-sq" wx:if="{{item.privilege.maxbr == 999000}}">SQ</text>
+            <text class="song-resons">{{utils.formatReasons(recommendReasons, item.id)}}</text>
+            <text class="song-ar">{{utils.formatAr(item)}}</text>
+          </view>
+        </view>
+        <view class="song-video song-icon">
+          <image src='../../assets/imgs/play-video.png'></image>
+        </view>
+        <view class="song-more song-icon">
+          <image src='../../assets/imgs/more.png'></image>
+        </view>
+      </view>
     </block>
   </view>
 </scroll-view>
