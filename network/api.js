@@ -5,6 +5,10 @@ export const reqLogin = (phone,password) => request({url:'/login/cellphone',data
 
 // 获取用户详细信息
 export const reqUserDetail = (uid) => request({url: '/user/detail',data: {uid}})
+
+// 获取用户的歌单信息、
+export const reqUserPlayList = (uid) => request({url: '/user/playlist', data: {uid}})
+
 // 获取首页banner图
 export const reqBanner = () => request({url: '/banner', data: {type: 2}})
 
