@@ -3,6 +3,8 @@
     background: #f5f5f5;
     width: 100vw;
     box-sizing: border-box;
+}
+.padding-box {
     padding: 0 20px;
 }
 .user {
@@ -41,17 +43,22 @@
 .profile .iconfont {
     margin-left: auto;
 }
-/* 我的页面功能卡片 */
-.function {
-    display: flex;
-    flex-wrap: wrap;
+
+/* 页面卡片样式 */
+.card {
     width: 96%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     padding: 20px 20px 0 20px;
     background: #fff;
     border-radius: 10px;
     box-sizing: border-box;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* 我的页面功能卡片 */
+.function {
+    display: flex;
+    flex-wrap: wrap;
 }
 .function view {
     display: flex;
@@ -68,4 +75,47 @@
 .function view text {
     margin-top: 10px;
     opacity: .6;
+}
+
+/* 我喜欢的音乐列表 */
+.play-list {
+    display: flex;
+    padding-bottom: 20px;
+    align-items: center;
+}
+.play-list image {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.play-list view {
+    display: flex;
+    flex-direction: column;
+}
+.play-list view text:first-child {
+    font-size: 14px;
+}
+.play-list view text:last-child {
+    font-size: 12px;
+    opacity: .6;
+}
+/* tab切换 滚动到 创建歌单&&收藏歌单 */
+.tab-scroll {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.tab-scroll view {
+    text-align: center;
+    width: 75px;
+    z-index: 99;
+}
+.tab-scroll view:last-child {
+    position: absolute;
+    height: 8px;
+    border-radius: 5px;
+    z-index: 1;
+    bottom: 0;
+    background: linear-gradient(to right, #d43c33, #ff000091);
 }

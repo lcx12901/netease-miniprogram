@@ -1,5 +1,5 @@
 // pages/me/me.js
-import {reqUserDetail} from '../../network/api.js'
+import {reqUserDetail, reqUserPlayList} from '../../network/api.js'
 Page({
 
     /**
@@ -7,7 +7,10 @@ Page({
      */
     data: {
       uid: 0,
-      userDetail: []
+      userDetail: [],
+      likeList: [],
+      playlist: [],
+      initLeft: 0,
     },
     toLogin () {
       wx.navigateTo({
@@ -18,19 +21,58 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      this.animation = wx.createAnimation()
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+      this.queryTab('#create')
     },
+    // 获取用户的详细信息
     async getUserDetail () {
       const userDetail = await reqUserDetail(this.data.uid)
       this.setData({
         userDetail
+      })
+    },
+    // 获取用户的所有歌单信息
+    async getUserPlayList (uid) {
+      const {playlist} = await reqUserPlayList(uid)
+      
+      this.setData({
+        likeList: playlist.splice(0,1),
+        playlist: playlist
+        
+      })
+    },
+    // 获取dom元素的left
+    queryTab (id) {
+      const query = wx.createSelectorQuery()
+      query.select(id).boundingClientRect()
+      query.exec( (res) => {
+        this.setData({
+          initLeft: res[0].left
+        })
+      })
+    },
+    // 点击tab item触发事件
+    tabScroll (e) {
+      const query = wx.createSelectorQuery()
+      query.select('#active').boundingClientRect()
+      query.select(`#${e.currentTarget.dataset.name}`).boundingClientRect()
+      let space
+      query.exec( (res) => {
+        if (e.currentTarget.dataset.name == 'create') {
+          space = - (res[1].left - this.data.initLeft)
+        } else {
+          space = res[1].left - this.data.initLeft
+        }
+        this.animation.translate(space, 0).step()
+        this.setData({
+          animation: this.animation.export()
+        })
       })
     },
     /**
@@ -40,7 +82,11 @@ Page({
       this.setData({
         uid: wx.getStorageSync('profile').userId
       })
-      if (this.data.uid && !Object.keys(this.data.userDetail).length) this.getUserDetail()
+      const {uid, userDetail, playlist} = this.data
+      if (uid) {
+        if (!Object.keys(userDetail).length) this.getUserDetail()
+        if (!Object.keys(playlist).length) this.getUserPlayList(uid)
+      }
       
     },
 

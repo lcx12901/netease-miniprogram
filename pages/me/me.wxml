@@ -4,57 +4,73 @@
     scroll-y="true"
     style="height: 100vh;"
     bindscroll="meScroll">
-    <!-- 用户头像信息 -->
-    <view class="user profile" wx:if="{{userDetail}}">
-        <view class="user-image">
-            <image src="{{userDetail.profile.avatarUrl}}"></image>
+    <view class="padding-box">
+        <!-- 用户头像信息 -->
+        <view class="user profile" wx:if="{{userDetail}}">
+            <view class="user-image">
+                <image src="{{userDetail.profile.avatarUrl}}"></image>
+            </view>
+            <view class="user-nickname">
+                <text>{{userDetail.profile.nickname}}</text>
+                <view>lv.{{userDetail.level}}</view>
+            </view>
+            <icon class="iconfont icon-iconfontjiantou5"></icon>
         </view>
-        <view class="user-nickname">
-            <text>{{userDetail.profile.nickname}}</text>
-            <view>lv.{{userDetail.level}}</view>
+        <view class="user login" wx:else bindtap="toLogin">
+            <view class="user-image">
+                <image src="../../assets/imgs/login-user.png"></image>
+            </view>
+            <text>立即登录</text>
+            <icon class="iconfont icon-iconfontjiantou5"></icon>
         </view>
-        <icon class="iconfont icon-iconfontjiantou5"></icon>
+        <!-- 功能 -->
+        <view class="function card">
+            <view>
+                <image src="../../assets/imgs/load.png"></image>
+                <text>本地/下载</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/yun.png"></image>
+                <text>云盘</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/shop.png"></image>
+                <text>已购</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/play-pink.png"></image>
+                <text>最近播放</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/friend.png"></image>
+                <text>我的好友</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/star.png"></image>
+                <text>收藏和赞</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/boke.png"></image>
+                <text>我的播客</text>
+            </view>
+            <view>
+                <image src="../../assets/imgs/add.png"></image>
+                <text>音乐应用</text>
+            </view>
+        </view>
+        <!-- 喜欢的音乐列表 -->
+        <view class="play-list card">
+            <image src="{{likeList[0].coverImgUrl}}"></image>
+            <view>
+                <text>我喜欢的音乐</text>
+                <text>{{likeList[0].trackCount}}首</text>
+            </view>
+        </view>
     </view>
-    <view class="user login" wx:else bindtap="toLogin">
-        <view class="user-image">
-            <image src="../../assets/imgs/login-user.png"></image>
-        </view>
-        <text>立即登录</text>
-        <icon class="iconfont icon-iconfontjiantou5"></icon>
-    </view>
-    <!-- 功能 -->
-    <view class="function">
-        <view>
-            <image src="../../assets/imgs/load.png"></image>
-            <text>本地/下载</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/yun.png"></image>
-            <text>云盘</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/shop.png"></image>
-            <text>已购</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/play-pink.png"></image>
-            <text>最近播放</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/friend.png"></image>
-            <text>我的好友</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/star.png"></image>
-            <text>收藏和赞</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/boke.png"></image>
-            <text>我的播客</text>
-        </view>
-        <view>
-            <image src="../../assets/imgs/add.png"></image>
-            <text>音乐应用</text>
-        </view>
+    <!-- 创建歌单 && 收藏歌单 的tab滚动 -->
+    <view class="tab-scroll">
+        <view id="create" data-name="create" bindtap="tabScroll">创建歌单</view>
+        <view id="star" data-name="star" bindtap="tabScroll">收藏歌单</view>
+        <view id="active" style="left: {{initLeft}}px;" animation="{{animation}}"></view>
     </view>
 </scroll-view>
