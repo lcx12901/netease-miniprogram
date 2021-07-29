@@ -4,6 +4,7 @@
   class="recommend"
   scroll-y="true"
   bindscroll="fixed"
+  binddragstart="fixed"
   style="height: 100vh"
 >
   <view class="title">
@@ -23,7 +24,7 @@
       <icon class="iconfont icon-VIP"></icon>
     </view>
   </view>
-  <view class="content" bindscroll="fixed" binddragstart="fixed">
+  <view class="content">
     <view class="{{fixed ? 'fixed' : ''}} play-all" hover-class="gray-back">
       <image src="../../assets/imgs/play-pink.png"></image>
       <text>播放全部</text>
