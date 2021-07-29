@@ -6,7 +6,7 @@ export const reqLogin = (phone,password) => request({url:'/login/cellphone',data
 // 获取用户详细信息
 export const reqUserDetail = (uid) => request({url: '/user/detail',data: {uid}})
 
-// 获取用户的歌单信息、
+// 获取用户的歌单信息
 export const reqUserPlayList = (uid) => request({url: '/user/playlist', data: {uid}})
 
 // 获取首页banner图
@@ -23,3 +23,12 @@ export const reqRecommendResource = () => request({url: '/recommend/resource'})
 
 // 获取歌单详情
 export const reqPlayListDetail = (id) => request({url: '/playlist/detail', data: {id}})
+
+// 获取视频标签列表
+export const reqVideoGroupList = () => request({url: '/video/group/list'})
+
+// 获取视频标签/分类下的视频
+export const reqVideoGroup = (id) => request({url: '/video/group', data: {id}})
+
+// 获取视频url地址
+export const reqVideoUrl = (id) => request({url: '/video/url', data: {id}})
