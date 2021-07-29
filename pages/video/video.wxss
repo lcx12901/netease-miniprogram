@@ -1,1 +1,26 @@
 /* pages/video/video.wxss */
+.nav-scroll {
+    display: flex;
+    white-space: nowrap;
+    height: 40px;
+    width: 100vw;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+.nav-item {
+    height: 20px;
+    margin: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+.active {
+    color: #f11919;
+    background: #f8e6df9a;
+}
+.videoScroll {
+    height: calc(100vh - 40px);
+    padding-top: 10px;
+    box-sizing: border-box;
+}

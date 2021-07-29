@@ -1,2 +1,46 @@
 <!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+  <!-- 导航 -->
+<scroll-view 
+    class="nav-scroll" 
+    scroll-x="true"
+    style="width: 100%" 
+    scroll-with-animation 
+    scroll-into-view="{{'s'+groupId}}" 
+    enable-flex="true"
+>
+    <view 
+        bindtap="itemClick" 
+        id="{{'s'+item.id}}" 
+        data-id="{{item.id}}" 
+        class="nav-item {{item.id === groupId ? 'active' : ''}}" 
+        wx:for="{{videoGroupList}}" 
+        wx:key="id"
+    >
+        <text>{{item.name}}</text>
+    </view>
+</scroll-view>
+<!-- 视频列表 -->
+<scroll-view 
+    class="videoScroll"
+    scroll-y>
+    <view 
+        class="videoItem" 
+        wx:for="{{videoList}}" 
+        wx:key="id">
+        <video 
+            autoplay
+            class="common" 
+            wx:if="{{item.data.vid === videoId}}" 
+            src="{{item.data.urlInfo.url}}" 
+            object-fit="fill" 
+            poster="{{item.data.coverUrl}}" 
+        />
+        <image 
+            class="common" 
+            bindtap="videoPlay" 
+            data-id="{{item.id}}" 
+            wx:else
+            src="{{item.data.coverUrl}}" 
+        />
+    </view>
+</scroll-view>
