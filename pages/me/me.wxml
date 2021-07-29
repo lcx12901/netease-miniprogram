@@ -3,16 +3,18 @@
     class="me"
     scroll-y="true"
     style="height: 100vh;"
-    bindscroll="meScroll">
+    bindscroll="meScroll"
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-with-animation="true">
     <view class="padding-box">
         <!-- 用户头像信息 -->
-        <view class="user profile" wx:if="{{userDetail}}">
+        <view class="user profile" wx:if="{{userDetail}}" id="user">
             <view class="user-image">
                 <image src="{{userDetail.profile.avatarUrl}}"></image>
             </view>
             <view class="user-nickname">
                 <text>{{userDetail.profile.nickname}}</text>
-                <view>lv.{{userDetail.level}}</view>
+                <view wx:if="{{userDetail.level}}">lv.{{userDetail.level}}</view>
             </view>
             <icon class="iconfont icon-iconfontjiantou5"></icon>
         </view>
@@ -59,7 +61,7 @@
             </view>
         </view>
         <!-- 喜欢的音乐列表 -->
-        <view class="play-list card">
+        <view class="play-list card" wx:if="{{likeList.length}}">
             <image src="{{likeList[0].coverImgUrl}}"></image>
             <view>
                 <text>我喜欢的音乐</text>
@@ -68,9 +70,74 @@
         </view>
     </view>
     <!-- 创建歌单 && 收藏歌单 的tab滚动 -->
-    <view class="tab-scroll">
-        <view id="create" data-name="create" bindtap="tabScroll">创建歌单</view>
-        <view id="star" data-name="star" bindtap="tabScroll">收藏歌单</view>
-        <view id="active" style="left: {{initLeft}}px;" animation="{{animation}}"></view>
+    <view class="white-tab-scroll" wx:if="{{isFixed}}" style="height: 41px;"></view>
+    <view class="tab-scroll {{isFixed ? 'fixed' : ''}}" id="tab-scroll">
+        <view 
+            id="create" 
+            data-name="create" 
+            bindtap="tabScroll"
+            style="font-weight: {{activeName == 'create' ? 'bolder': ''}};">
+            创建歌单
+        </view>
+        <view 
+            id="star" 
+            data-name="star" 
+            bindtap="tabScroll"
+            style="font-weight: {{activeName == 'star' ? 'bolder': ''}};">
+            收藏歌单
+        </view>
+        <view id="active" style="left: {{initLeft}}px;" animation="{{animation}}" wx:if="{{block}}"></view>
+    </view>
+    <view class="padding-box">
+        <!-- 用户创建的歌单列表 -->
+        <view class="list card" id="createList">
+            <view class="list-title">
+                <text>创建的歌单（{{createList.length}}个）</text>
+                <view class="icon icon-add icon-left-auto">
+                    <image src="../../assets/imgs/add-noback.png"></image>
+                </view>
+                <view class="icon">
+                    <image src="../../assets/imgs/more.png"></image>
+                </view>
+            </view>
+            <block wx:for="{{createList}}" wx:key="*this">
+                <view class="list-item" data-id="{{item.id}}">
+                    <image src="{{item.coverImgUrl}}"></image>
+                    <view>
+                        <text>{{item.name}}</text>
+                        <text>{{item.trackCount}}首</text>
+                    </view>
+                    <view class="icon icon-left-auto">
+                        <image src="../../assets/imgs/more.png"></image>
+                    </view>
+                </view>
+            </block>
+            <view class="no-list" wx:if="{{!createList.length}}">暂无创建的歌单</view>
+        </view>
+        <!-- 用户收藏的歌单列表 -->
+        <view class="list card" id="starList">
+            <view class="list-title">
+                <text>收藏的歌单（{{starList.length}}个）</text>
+                <view class="icon icon-add icon-left-auto">
+                    <image src="../../assets/imgs/add-noback.png"></image>
+                </view>
+                <view class="icon">
+                    <image src="../../assets/imgs/more.png"></image>
+                </view>
+            </view>
+            <block wx:for="{{starList}}" wx:key="*this">
+                <view class="list-item" data-id="{{item.id}}">
+                    <image src="{{item.coverImgUrl}}"></image>
+                    <view>
+                        <text>{{item.name}}</text>
+                        <text>{{item.trackCount}}首</text>
+                    </view>
+                    <view class="icon icon-left-auto">
+                        <image src="../../assets/imgs/more.png"></image>
+                    </view>
+                </view>
+            </block>
+            <view class="no-list" wx:if="{{!starList.length}}">暂无收藏的歌单</view>
+        </view>
     </view>
 </scroll-view>

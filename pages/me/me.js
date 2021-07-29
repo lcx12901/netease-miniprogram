@@ -9,8 +9,13 @@ Page({
       uid: 0,
       userDetail: [],
       likeList: [],
-      playlist: [],
+      createList: [],
+      starList: [],
       initLeft: 0,
+      block: false,
+      activeName: 'create',
+      scrollIntoView: 'user',
+      isFixed: false,
     },
     toLogin () {
       wx.navigateTo({
@@ -21,14 +26,17 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      this.animation = wx.createAnimation()
+      this.animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease-in-out',
+      })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-      this.queryTab('#create')
+      this.queryTab()
     },
     // 获取用户的详细信息
     async getUserDetail () {
@@ -39,21 +47,27 @@ Page({
     },
     // 获取用户的所有歌单信息
     async getUserPlayList (uid) {
-      const {playlist} = await reqUserPlayList(uid)
-      
+      const {playlist, code} = await reqUserPlayList(uid)
+      if (code != 200) return
+      const likeList = playlist.splice(0,1)
+      const createList = playlist.filter( item => item.creator.userId == uid)
+      const starList = playlist.filter(item => item.creator.userId != uid)
       this.setData({
-        likeList: playlist.splice(0,1),
-        playlist: playlist
-        
+        likeList,
+        createList,
+        starList
       })
     },
-    // 获取dom元素的left
-    queryTab (id) {
+    // 获取tab的位置
+    queryTab () {
       const query = wx.createSelectorQuery()
-      query.select(id).boundingClientRect()
+      query.select('#tab-scroll').boundingClientRect()
+      query.select('#create').boundingClientRect()
       query.exec( (res) => {
         this.setData({
-          initLeft: res[0].left
+          fixedTop: res[0].top,
+          initLeft: res[1].left,
+          block: true
         })
       })
     },
@@ -71,9 +85,18 @@ Page({
         }
         this.animation.translate(space, 0).step()
         this.setData({
-          animation: this.animation.export()
+          animation: this.animation.export(),
+          activeName: e.currentTarget.dataset.name,
+          scrollIntoView: e.currentTarget.dataset.name + 'List'
         })
       })
+    },
+    // 页面scroll-view滚动监听
+    meScroll (e) {
+      const {scrollTop} = e.detail
+      let isFixed
+      scrollTop >= this.data.fixedTop ? isFixed = true : isFixed = false
+      if (isFixed != this.data.isFixed) this.setData({isFixed})
     },
     /**
      * 生命周期函数--监听页面显示
@@ -82,10 +105,11 @@ Page({
       this.setData({
         uid: wx.getStorageSync('profile').userId
       })
-      const {uid, userDetail, playlist} = this.data
+      const {uid, userDetail, createList, starList} = this.data
+      console.log(!createList.length || !starList.length)
       if (uid) {
         if (!Object.keys(userDetail).length) this.getUserDetail()
-        if (!Object.keys(playlist).length) this.getUserPlayList(uid)
+        if (!createList.length || !starList.length) this.getUserPlayList(uid)
       }
       
     },
