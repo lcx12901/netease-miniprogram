@@ -1,11 +1,12 @@
 {
   "pages":[
+    "pages/recommend/recommend",
+
     "pages/video/video",
     "pages/me/me",
     "pages/found/found",
     "pages/login/login",
-    "pages/recommend/recommend"
-    
+    "pages/songPlay/songPlay"
     
   ],
   "window":{
@@ -37,6 +38,9 @@
       }
     ]
   },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
