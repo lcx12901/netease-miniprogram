@@ -1,4 +1,5 @@
 // pages/recommend/recommend.js
+const app = getApp()
 import {reqRecommendSongs} from '../../network/api'
 Page({
 
@@ -30,11 +31,26 @@ Page({
       fixed: isFixed
     })
   },
+  // 添加音乐进全局播放列表
+ addPlayList () {
+    app.globalData.playList = this.data.dailySongs
+  },
+  // 点击播放全部
+  async playAll () {
+    this.addPlayList()
+    app.playAudio(0)
+    wx.navigateTo({
+      url: '/pages/songPlay/songPlay',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getRecommendSongs()
+    app.globalData.BackgroundAudioManager.onEnded( () => {
+      console.log('nnkj')
+    })
   },
 
   /**

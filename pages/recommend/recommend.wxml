@@ -25,7 +25,7 @@
     </view>
   </view>
   <view class="content">
-    <view class="{{fixed ? 'fixed' : ''}} play-all" hover-class="gray-back">
+    <view class="{{fixed ? 'fixed' : ''}} play-all" hover-class="gray-back" bindtap="playAll">
       <image src="../../assets/imgs/play-pink.png"></image>
       <text>播放全部</text>
       <image src="../../assets/imgs/download.png"></image>
@@ -52,3 +52,9 @@
     </block>
   </view>
 </scroll-view>
+<!-- <view class="play-window">
+  <view>
+    <image src="../../assets/imgs/disc.png"></image>
+    <image></image>
+  </view>
+</view> -->
