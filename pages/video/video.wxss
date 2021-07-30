@@ -24,3 +24,39 @@
     padding-top: 10px;
     box-sizing: border-box;
 }
+.common {
+    width: 100%;
+}
+.video-cover {
+    position: relative;
+}
+.video-cover image:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+}
+.video-info {
+    display: flex;
+    padding: 20px 10px;
+}
+.video-info text {
+    width: 50%;
+    -webkit-line-clamp: 2;
+    height: 40px;
+}
+.video-info > view {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-right: 5%;
+}
+.video-info > view text {
+    width: 30px;
+}
+.video-praised {
+    margin-left: auto;
+}

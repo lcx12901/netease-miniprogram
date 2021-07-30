@@ -1,11 +1,12 @@
 <!--pages/video/video.wxml-->
+<wxs module="utils" src="../../utils/util.wxs"></wxs>
   <!-- 导航 -->
 <scroll-view 
     class="nav-scroll" 
     scroll-x="true"
     style="width: 100%" 
     scroll-with-animation 
-    scroll-into-view="{{'s'+groupId}}" 
+    scroll-into-view="{{'s'+groupId}}"
     enable-flex="true"
 >
     <view 
@@ -22,25 +23,42 @@
 <!-- 视频列表 -->
 <scroll-view 
     class="videoScroll"
-    scroll-y>
+    scroll-y
+    lower-threshold="50"
+    bindscrolltolower="moreVideo">
     <view 
         class="videoItem" 
         wx:for="{{videoList}}" 
         wx:key="id">
         <video 
             autoplay
-            class="common" 
+            class="common"
             wx:if="{{item.data.vid === videoId}}" 
-            src="{{item.data.urlInfo.url}}" 
-            object-fit="fill" 
+            src="{{urls[0].url}}" 
+            object-fit="contain"
+            title="{{item.data.title}}"
             poster="{{item.data.coverUrl}}" 
         />
-        <image 
-            class="common" 
-            bindtap="videoPlay" 
-            data-id="{{item.id}}" 
-            wx:else
-            src="{{item.data.coverUrl}}" 
-        />
+        <view wx:else class="video-cover" data-vid="{{item.data.vid}}" bindtap="changVideo">
+            <image 
+                class="common" 
+                bindtap="videoPlay" 
+                data-id="{{item.id}}" 
+                src="{{item.data.coverUrl}}"
+            />
+            <image src="../../assets/imgs/play-pink.png"></image>
+        </view>
+        <view class="video-info">
+            <text class="text-wrap">{{item.data.title}}</text>
+            <view class="video-praised">
+                <icon class="iconfont icon-dianzan"></icon>
+                <text>{{utils.formatNumberUnit(item.data.praisedCount)}}</text>
+            </view>
+            <view class="video-comment">
+                <icon class="iconfont icon-comment"></icon>
+                <text>{{utils.formatNumberUnit(item.data.commentCount)}}</text>
+            </view>
+            <icon class="iconfont icon-gengduo"></icon>
+        </view>
     </view>
 </scroll-view>
