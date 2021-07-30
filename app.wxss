@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2700302 */
-  src: url('//at.alicdn.com/t/font_2700302_amo5a5yra2.woff2?t=1627393945418') format('woff2'),
-       url('//at.alicdn.com/t/font_2700302_amo5a5yra2.woff?t=1627393945418') format('woff'),
-       url('//at.alicdn.com/t/font_2700302_amo5a5yra2.ttf?t=1627393945418') format('truetype');
+  src: url('//at.alicdn.com/t/font_2700302_1oeodvb97aq.woff2?t=1627614549421') format('woff2'),
+       url('//at.alicdn.com/t/font_2700302_1oeodvb97aq.woff?t=1627614549421') format('woff'),
+       url('//at.alicdn.com/t/font_2700302_1oeodvb97aq.ttf?t=1627614549421') format('truetype');
 }
 
 .iconfont {
@@ -38,7 +38,16 @@
 .icon-VIP:before {
   content: "\e603";
 }
+.icon-comment:before {
+  content: "\e638";
+}
 
+.icon-dianzan:before {
+  content: "\e6f6";
+}
+.icon-gengduo:before {
+  content: "\e689";
+}
 /**app.wxss**/
 
 /* .container {
@@ -59,8 +68,6 @@
   align-content: center;
 }
 ::-webkit-scrollbar {
-
   display: none;
-
 }
 
