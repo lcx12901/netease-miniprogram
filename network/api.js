@@ -28,7 +28,10 @@ export const reqPlayListDetail = (id) => request({url: '/playlist/detail', data:
 export const reqVideoGroupList = () => request({url: '/video/group/list'})
 
 // 获取视频标签/分类下的视频
-export const reqVideoGroup = (id) => request({url: '/video/group', data: {id}})
+export const reqVideoGroup = (id, offset) => request({url: '/video/group', data: {id, offset}})
 
 // 获取视频url地址
 export const reqVideoUrl = (id) => request({url: '/video/url', data: {id}})
+
+// 获取音乐url
+export const reqSongUrl = (id) =>request({url: '/song/url', data: {id}})
