@@ -32,7 +32,12 @@
     </view>
     <view class="play-all" wx:if="{{fixed}}"></view>
     <block wx:for="{{dailySongs}}" wx:key="*this">
-      <view class="song" data-id="{{item.al.id}}">
+      <view 
+        class="song" 
+        data-id="{{item.id}}"  
+        hover-class="gray-back"
+        bindtap="playThis"
+      >
         <image src="{{item.al.picUrl}}"></image>
         <view class="song-info">
           <text>{{item.name}} <text wx:if="{{item.alia.length}}">({{item.alia[0]}})</text></text>
