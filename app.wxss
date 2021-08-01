@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2700302 */
-  src: url('//at.alicdn.com/t/font_2700302_1oeodvb97aq.woff2?t=1627614549421') format('woff2'),
-       url('//at.alicdn.com/t/font_2700302_1oeodvb97aq.woff?t=1627614549421') format('woff'),
-       url('//at.alicdn.com/t/font_2700302_1oeodvb97aq.ttf?t=1627614549421') format('truetype');
+  src: url('//at.alicdn.com/t/font_2700302_42jo75q49zn.woff2?t=1627807637835') format('woff2'),
+       url('//at.alicdn.com/t/font_2700302_42jo75q49zn.woff?t=1627807637835') format('woff'),
+       url('//at.alicdn.com/t/font_2700302_42jo75q49zn.ttf?t=1627807637835') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shangyishou:before {
+  content: "\e604";
+}
+
+.icon-xiayishou:before {
+  content: "\e602";
+}
+
+.icon-weibiaoti--1:before {
+  content: "\e610";
+}
+
+.icon-weibiaoti--:before {
+  content: "\e60f";
+}
+
+.icon-zuojiantou:before {
+  content: "\e6a5";
+}
+
+.icon-Home:before {
+  content: "\e63e";
 }
 
 .icon-shouyinji:before {
