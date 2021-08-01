@@ -1,5 +1,5 @@
 // app.js
-import {reqSongUrl} from '/network/api'
+import {reqSongUrl, reqLyric} from '/network/api'
 App({
   onLaunch() {
     // 监听本页面修改globalData，使其他页面实时获得
@@ -56,7 +56,8 @@ App({
   _globalData: {
     playList: [],
     songId: 0,
-    audioPlaying: false
+    audioPlaying: false,
+    lrc: []
   },
   // 监听globalData变化
   watch(method) {
@@ -87,6 +88,7 @@ App({
       this.globalData.BackgroundAudioManager.coverImgUrl  = al.picUrl
       this.globalData.BackgroundAudioManager.src = data[0].url
       this.globalData.audioPlaying = true
+      // this.getLrc(id)
       return true
     }
   },
@@ -103,5 +105,16 @@ App({
       }
       this.playAudio(index)
     }
-  }
+  },
+  // 格式化歌词
+  // async getLrc (id) {
+  //   const {lrc} = await reqLyric(id)
+  //   let lyric = lrc.lyric.split('\n')
+  //   lyric.pop()
+  //   let lyricList = {}
+  //   lyric.forEach( item => {
+  //     // let time = item.split(']')[0].split('[')[1].split('.')[0]
+  //     console.log(item)
+  //   })
+  // }
 })
