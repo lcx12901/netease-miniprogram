@@ -48,6 +48,23 @@ Page({
       })
     })
   },
+  // 点击单曲播放
+  playThis (e) {
+    const {id} = e.currentTarget.dataset
+    const {playList, songId} = app.globalData
+    if (!playList.length) this.addPlayList()
+    if ( playList && songId == id ) {
+      wx.navigateTo({
+        url: '/pages/songPlay/songPlay',
+      })
+      return
+    }
+    const index = this.data.dailySongs.findIndex(item => item.id == id)
+    app.playAudio(index)
+    wx.navigateTo({
+      url: '/pages/songPlay/songPlay',
+    })
+  },
   // 返回监听到的数据
   watchBack (value) {
     // console.log(value)
