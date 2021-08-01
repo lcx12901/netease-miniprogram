@@ -33,24 +33,31 @@ Page({
   },
   // 添加音乐进全局播放列表
  addPlayList () {
-    app.globalData.playList = this.data.dailySongs
+    app.globalData = {
+      ...app.globalData,
+      playList: this.data.dailySongs
+    }
   },
   // 点击播放全部
   async playAll () {
     this.addPlayList()
-    app.playAudio(0)
-    wx.navigateTo({
-      url: '/pages/songPlay/songPlay',
+    // 音频创建完成之后才能进行pages跳转
+    app.playAudio(0).then( (res) => {
+      if (res)  wx.navigateTo({
+        url: '/pages/songPlay/songPlay',
+      })
     })
+  },
+  // 返回监听到的数据
+  watchBack (value) {
+    // console.log(value)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.watch(this.watchBack)
     this.getRecommendSongs()
-    app.globalData.BackgroundAudioManager.onEnded( () => {
-      console.log('nnkj')
-    })
   },
 
   /**
