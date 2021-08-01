@@ -41,7 +41,7 @@ $ npm install
 
 在对应页面的`pages.json`或者全局app.json中进行声明：`"tabBar": { "custom": true }`
 
-![image-20210802000420792](C:\Users\纨绔贪狼\AppData\Roaming\Typora\typora-user-images\image-20210802000420792.png)
+![image-20210802003610907](E:\Study\netease-miniprogram\READEME_IMG\image-20210802003610907.png)
 
 ​	
 
