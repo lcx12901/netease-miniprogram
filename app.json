@@ -1,12 +1,15 @@
 {
   "pages":[
+    "pages/found/found",
+
     "pages/recommend/recommend",
+
+    "pages/songPlay/songPlay",
+
 
     "pages/video/video",
     "pages/me/me",
-    "pages/found/found",
-    "pages/login/login",
-    "pages/songPlay/songPlay"
+    "pages/login/login"
     
   ],
   "window":{
