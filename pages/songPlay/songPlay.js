@@ -15,8 +15,10 @@ Page({
         this.calcNavTitle()
         app.watch(this.watchBack)
     },
+
     // 监听app.js
     watchBack (value) {
+        // 音频播放读秒
         const {currentPosition, duration} = value
         const minute = (`0${Math.floor(duration / 60)}`).slice(-2)
         const second = (`0${Math.floor(duration % 60)}`).slice(-2)
@@ -27,7 +29,7 @@ Page({
             song: value.playList.filter(item => item.id == value.songId),
             progress: ((currentPosition / duration) * 100).toFixed(0),
             currentPosition: `${currentMinute}:${currentSecond}`,
-            duration: `${minute}:${second}`
+            duration: `${minute}:${second}`,
         })
     },
     // 计算标题栏的高度
