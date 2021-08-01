@@ -1,1 +1,152 @@
 /* pages/songPlay/songPlay.wxss */
+page {
+  color: #fff;
+}
+view {
+  box-sizing: border-box;
+}
+/* 页面背景 */
+.coverImage {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -99;
+}
+.coverImage image {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  filter: blur(15px);
+}
+/* 自定义标题栏 */
+.navBar {
+  color: #fff;
+  width: 100vw;
+}
+.nav-navigate {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  justify-content: center;
+  width: 85px;
+  text-align: center;
+  background: #00000044;
+  border: 1px solid #FFF;
+  border-radius: 30px;
+}
+.nav-navigate view {
+  width: 1px;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background: #fff;
+}
+.navBar text {
+  display: block;
+  position: absolute;
+  left: 50%; 
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 35vw;
+  max-width: 35vw;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* 歌曲播放主体内容 */
+.play {
+  position: relative;
+  padding: 5px 10px;
+}
+.play .logo {
+  position: absolute;
+  display: flex;
+  line-height: 30px;
+  top: 20px;
+  left: 10px;
+}
+.logo image {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+.play-heijiao {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.play-heijiao .needle {
+  width: 30vw;
+  margin-left: 10vw;
+  z-index: 1;
+  
+}
+.play-heijiao .disc {
+  position: relative;
+  margin-top: -11vh;
+}
+.play-heijiao .disc .disc-rote {
+  animation: rotating 6s linear infinite;
+}
+@keyframes rotating {
+  from { -webkit-transform: rotate(0) }
+  to { -webkit-transform: rotate(360deg) }
+}
+.rotateP {
+  animation-play-state:running !important;
+}
+.rotateT {
+  animation-play-state:paused !important;
+}
+.play-heijiao .disc .disc-rote image:first-child {
+  width: 70vw;
+  height: 70vw;
+  
+
+}
+.play-heijiao .disc .disc-rote image:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+.play-heijiao .disc .disc-rote image:last-child {
+  width: 50vw;
+  height: 50vw;
+  border-radius: 100%;
+ }
+ 
+ /* 进度条 */
+ .progress {
+   display: flex;
+   justify-content: center;
+   width: 100vw;
+   padding: 0 5vw;
+ }
+ .progress progress {
+   width: 60vw;
+ }
+ .progress text:first-child {
+   margin-right: auto;
+ }
+ .progress text:last-child {
+   margin-left: auto;
+ }
+ /* 功能按钮组 */
+ .fun-btn icon {
+  font-size: 50px;
+}
+.fun-btn icon:nth-child(2) {
+  margin:  0 20px;
+}
