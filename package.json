@@ -1,0 +1,20 @@
+{
+  "name": "netease-miniprogram",
+  "version": "1.0.0",
+  "description": "仿网易云音乐小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcx12901/netease-miniprogram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lcx12901/netease-miniprogram/issues"
+  },
+  "homepage": "https://github.com/lcx12901/netease-miniprogram#readme",
+  "dependencies": {}
+}
