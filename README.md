@@ -41,7 +41,7 @@ $ npm install
 
 在对应页面的`pages.json`或者全局app.json中进行声明：`"tabBar": { "custom": true }`
 
-![image-20210802003610907](E:\Study\netease-miniprogram\READEME_IMG\image-20210802003610907.png)
+![image-20210802003610907](https://github.com/lcx12901/netease-miniprogram/blob/master/READEME_IMG/image-20210802003610907.png)
 
 ​	
 
