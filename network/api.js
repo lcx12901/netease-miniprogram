@@ -35,3 +35,6 @@ export const reqVideoUrl = (id) => request({url: '/video/url', data: {id}})
 
 // 获取音乐url
 export const reqSongUrl = (id) =>request({url: '/song/url', data: {id}})
+
+// 获取歌曲歌词
+export const reqLyric = (id) => request({url: '/lyric', data: {id}})
