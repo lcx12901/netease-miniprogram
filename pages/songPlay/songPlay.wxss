@@ -26,6 +26,7 @@ view {
 /* 自定义标题栏 */
 .navBar {
   color: #fff;
+
   width: 100vw;
 }
 .nav-navigate {
@@ -60,6 +61,8 @@ view {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-shadow: rgba(0, 0, 0, 0.507) 0.1em 0.1em 0.2em;
+
 }
 /* 歌曲播放主体内容 */
 .play {
@@ -137,6 +140,10 @@ view {
  .progress progress {
    width: 60vw;
  }
+ .progress text {
+  text-shadow: rgba(0, 0, 0, 0.507) 0.1em 0.1em 0.2em;
+
+ }
  .progress text:first-child {
    margin-right: auto;
  }
@@ -144,9 +151,22 @@ view {
    margin-left: auto;
  }
  /* 功能按钮组 */
+ .fun-btn {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   margin-top: 40px;
+ }
  .fun-btn icon {
-  font-size: 50px;
+  font-size: 40px;
+  text-shadow: rgba(0, 0, 0, 0.39) 0.1em 0.1em 0.2em;
 }
-.fun-btn icon:nth-child(2) {
+.fun-btn icon:first-child {
+  margin-right: auto;
+}
+.fun-btn icon:nth-child(3) {
   margin:  0 20px;
+}
+.fun-btn icon:last-child {
+  margin-left: auto;
 }

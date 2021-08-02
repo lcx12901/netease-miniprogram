@@ -46,9 +46,11 @@
     </view>
     <!-- 功能按钮 -->
     <view class="fun-btn">
+      <icon class="iconfont icon-fenxiang"></icon>
       <icon class="iconfont icon-shangyishou" bindtap="prevAudio"></icon>
       <icon class="iconfont {{audioPlaying ? 'icon-weibiaoti--1' : 'icon-weibiaoti--'}}" bindtap="playControll"></icon>
       <icon class="iconfont icon-xiayishou" bindtap="nextAudio"></icon>
+      <icon class="iconfont icon-caidan" bindtap="showPlayList"></icon>
     </view>
   </view>
 </view>
