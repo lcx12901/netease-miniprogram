@@ -1,4 +1,6 @@
 ﻿// pages/found/found.js
+const app = getApp()
+
 import {
     reqBanner, 
     reqHomePageBall, 
@@ -67,6 +69,16 @@ Page({
             banners
         })
     },
+    // banner点击播放歌曲
+    playBannerSong (e) {
+        const {current} = e.currentTarget.dataset
+        const song = this.data.banners[current].song
+        if (!song) return
+        app.globalData = {
+            playList: [song]
+        }
+        app.playAudio(0)
+    },
     // 首页-发现-圆形图标入口列表
     async getBall () {
         const {data} = await reqHomePageBall()
@@ -114,6 +126,10 @@ Page({
         })
 
     },
+    // 监听globalData
+    watchBack (value) {
+        // console.log(value)
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -122,6 +138,7 @@ Page({
         this.getBall()
         this.getRecommendResource()
         this.getPlayListDetail()
+        app.watch(this.watchBack)
     },
 
     /**
@@ -135,6 +152,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        this.getRecommendResource()
 
     },
 

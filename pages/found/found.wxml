@@ -13,7 +13,7 @@
         easing-function="linear"
     >
         <block wx:for="{{banners}}" wx:key="*this">
-            <swiper-item class="swiper-box">
+            <swiper-item class="swiper-box" data-current="{{index}}" bindtap="playBannerSong">
                 <image
                     class="swiper-img"
                     style=" background-color: #eeeeee;" 
