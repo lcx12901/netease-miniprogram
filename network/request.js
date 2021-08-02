@@ -5,7 +5,6 @@ export const request =  ({url, data = {}, method = 'get' }) => {
       title: '请稍等',
       mask: true,
     })
-
     return new Promise ( (resolve, reject) => {
         wx.request({
           url: BASEURL + url,
