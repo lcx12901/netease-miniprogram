@@ -52,7 +52,7 @@ Page({
   playThis (e) {
     const {id} = e.currentTarget.dataset
     const {playList, songId} = app.globalData
-    if (!playList.length) this.addPlayList()
+    if (!playList.length || playList != this.data.dailySongs) this.addPlayList()
     if ( playList && songId == id ) {
       wx.navigateTo({
         url: '/pages/songPlay/songPlay',
@@ -74,7 +74,7 @@ Page({
    */
   onLoad: function (options) {
     app.watch(this.watchBack)
-    this.getRecommendSongs()
+    // this.getRecommendSongs()
   },
 
   /**
@@ -88,6 +88,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (!this.data.dailySongs) this.getRecommendSongs()
 
   },
 
