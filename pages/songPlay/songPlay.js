@@ -69,6 +69,10 @@ Page({
             app.globalData.BackgroundAudioManager.play()
         }
     },
+    // 分享按钮
+    share () {
+        Page.onShareAppMessage()
+    },
     // 切换上一首
     prevAudio () {
         app.changeAudio('prev')
@@ -76,6 +80,10 @@ Page({
     // 切换下一首
     nextAudio () {
         app.changeAudio('next')
+    },
+    // 显示播放列表
+    showPlayList () {
+        
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -123,6 +131,19 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
+        const promise = new Promise(resolve => {
+            setTimeout(() => {
+              resolve({
+                title: this.data.song[0].name,
+                imageUrl: this.data.song[0].al.picUrl,
 
+              })
+            }, 2000)
+          })
+          return {
+            title: this.data.song[0].name,
+            path: 'pages/recommend/recommend',
+            promise 
+          }
     }
 })
