@@ -5,8 +5,6 @@
     "pages/recommend/recommend",
 
     "pages/songPlay/songPlay",
-
-
     "pages/video/video",
     "pages/me/me",
     "pages/login/login"
