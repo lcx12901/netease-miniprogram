@@ -16,5 +16,7 @@
     "url": "https://github.com/lcx12901/netease-miniprogram/issues"
   },
   "homepage": "https://github.com/lcx12901/netease-miniprogram#readme",
-  "dependencies": {}
+  "dependencies": {
+    "@nondanee/unblockneteasemusic": "^0.25.3"
+  }
 }
